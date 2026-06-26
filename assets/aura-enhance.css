@@ -11,9 +11,18 @@
    new-tab viewport and leave a dark strip. Use 100% of the document instead;
    html/body/#root are already height:100% with margin:0. */
 html, body, #root { height: 100%; margin: 0; }
+
+/* Pin the dashboard (and its wallpaper) to the full visual viewport with
+   position:fixed. This sidesteps the 100vh/100% height quirk that left a
+   black strip at the bottom — a fixed element always covers the whole tab. */
 .shell {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
   height: 100%;
-  min-height: 100%;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
