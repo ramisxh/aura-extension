@@ -5,6 +5,27 @@
    Safe to remove: delete this file + its <link>/<script> tags in index.html.
    ============================================================================ */
 
+/* ---- Wallpaper: fill the full screen (no black bar at the bottom) ------ */
+
+/* The built CSS sets `.shell { height: 100vh }`, which can overshoot the real
+   new-tab viewport and leave a dark strip. Use 100% of the document instead;
+   html/body/#root are already height:100% with margin:0. */
+html, body, #root { height: 100%; margin: 0; }
+.shell {
+  height: 100%;
+  min-height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ---- Lighter top navbar (less heavy, lets the wallpaper show through) --- */
+
+.topbar {
+  background: rgba(14, 12, 26, 0.45);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
 /* ---- Glassmorphism cards + hover micro-animations ---------------------- */
 
 .board-card {
