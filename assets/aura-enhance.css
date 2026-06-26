@@ -65,6 +65,27 @@
   transform: scale(0.96);
 }
 
+/* ---- Overflow fix: long boxes scroll instead of running off-screen ----- */
+
+/* A box with many links scrolls internally; its title + add-bar stay put. */
+.bcard-list {
+  max-height: 58vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+}
+.bcard-list::-webkit-scrollbar { width: 6px; }
+.bcard-list::-webkit-scrollbar-track { background: transparent; }
+.bcard-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 3px;
+}
+.bcard-list::-webkit-scrollbar-thumb:hover { background: rgba(129, 140, 248, 0.5); }
+
+/* Let the whole board area scroll vertically when columns get tall, so
+   nothing is clipped off the bottom of the screen. (Original was hidden.) */
+.canvas { overflow-y: auto; }
+
 /* ---- Ambient widget: greeting + clock + date + daily intention --------- */
 
 .aura-widget {
