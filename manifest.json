@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "Aura",
+  "version": "1.0.0",
+  "description": "A visual bookmark manager that replaces your New Tab with a beautiful dashboard.",
+  "permissions": [
+    "bookmarks",
+    "storage",
+    "tabs",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "commands": {
+    "quick-save": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y"
+      },
+      "description": "Save active tab to Inbox"
+    }
+  },
+  "action": {
+    "default_title": "Aura",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}
