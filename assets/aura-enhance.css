@@ -205,3 +205,76 @@ html, body, #root { height: 100%; margin: 0; }
 @media (max-height: 560px) {
   .aura-widget { display: none; }
 }
+
+/* Quote-only widget (clock/date/greeting removed): tighter, lighter box */
+.aura-widget--quote {
+  padding: 12px 15px;
+  min-width: 0;
+  max-width: 300px;
+}
+.aura-widget--quote .aura-quote {
+  font-size: 12.5px;
+}
+
+/* ---- Export / Import controls (bottom-left, mirrors the quote widget) --- */
+.aura-tools {
+  position: fixed;
+  left: 22px;
+  bottom: 46px;
+  z-index: 90;
+  display: flex;
+  gap: 8px;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: aura-widget-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
+}
+.aura-tool-btn {
+  font-family: Outfit, sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text, rgba(255, 255, 255, 0.9));
+  padding: 8px 13px;
+  border-radius: var(--r, 12px);
+  background: var(--glass, rgba(12, 10, 22, 0.72));
+  -webkit-backdrop-filter: var(--blur, blur(18px));
+  backdrop-filter: var(--blur, blur(18px));
+  border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.1));
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: transform 0.16s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.aura-tool-btn:hover {
+  transform: translateY(-2px);
+  border-color: rgba(129, 140, 248, 0.45);
+  box-shadow: 0 14px 48px rgba(0, 0, 0, 0.6), 0 0 22px var(--accent-glow, rgba(129, 140, 248, 0.25));
+}
+.aura-tool-btn:active { transform: scale(0.97); }
+
+@media (max-height: 560px) {
+  .aura-tools { display: none; }
+}
+
+/* ---- Per-board "Open all" button --------------------------------------- */
+.aura-openall {
+  margin-left: 6px;
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  line-height: 22px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-dim, rgba(255, 255, 255, 0.55));
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.1));
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.16s ease, color 0.16s ease, background 0.16s ease, transform 0.16s ease;
+}
+.board-card:hover .aura-openall { opacity: 1; }
+.aura-openall:hover {
+  color: #fff;
+  background: rgba(129, 140, 248, 0.35);
+  transform: scale(1.08);
+}
+.aura-openall:active { transform: scale(0.94); }
